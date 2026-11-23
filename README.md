@@ -40,8 +40,8 @@ MOM_reports/
 | # | Report Title | Tested Materials | Primary Setup & Standards | Key Findings & Extracted Properties | Report Link |
 |---|---|---|---|---|:---:|
 | **1** | **Uniaxial Tension and Compression Testing of Aluminium, Mild Steel, and Cast Iron** | Aluminium, Mild Steel, Cast Iron | Universal Testing Machine (UTM), Load Cell, Extensometer, ASTM Dog-bone & Cylindrical samples | Evaluated $\sigma_y$, UTS, and $E$ in tension and compression; characterized ductile necking vs. brittle cleavage and barreling effect. | [📄 PDF](MOM_lab1.pdf) |
-| **2** | **Material Response Under Impact and Torsional Loading** | Aluminium (Al) | Charpy Pendulum Impact Tester (150 J), Torsion Testing Machine ($T$-$\theta$ sensors) | Average impact energy $KV_{\text{avg}} = 16.35\text{ J}$; shear modulus $G = 15.67\text{ GPa}$, $\tau_y = 148.5\text{ MPa}$, $\tau_{\max} = 204.2\text{ MPa}$; analyzed strain-rate sensitivity. | [📄 PDF](MOM_lab2.pdf) |
-| **3** | **Deformations Induced Due to Bending in Beams with Different End Conditions** | Aluminium (Al), Mild Steel (MS) | Dead-weight bending frame ($100\text{--}400\text{ g}$), Plunger dial gauge ($0.01\text{ mm}$), Cantilever & Simply Supported fixtures | Verified Euler–Bernoulli beam theory; measured slope ratio $\Delta\delta_{\text{Al}}/\Delta\delta_{\text{MS}} = 2.84$ ($2.2\%$ error vs. theoretical $E_{\text{MS}}/E_{\text{Al}} = 2.90$); quantified clamp compliance. | [📄 PDF](MOM_lab3.pdf) |
+| **2** | **Material Response Under Impact and Torsional Loading** | Aluminium (Al) | Charpy Pendulum Impact Tester (150 J), Torsion Testing Machine ($T$-$\theta$ sensors) | Average impact energy $KV = 16.35\text{ J}$; shear modulus $G = 15.67\text{ GPa}$, $\tau_y = 148.5\text{ MPa}$, $\tau_{\max} = 204.2\text{ MPa}$; analyzed strain-rate sensitivity. | [📄 PDF](MOM_lab2.pdf) |
+| **3** | **Deformations Induced Due to Bending in Beams with Different End Conditions** | Aluminium (Al), Mild Steel (MS) | Dead-weight bending frame (100–400 g), plunger dial gauge (0.01 mm), cantilever & simply supported fixtures | Verified Euler–Bernoulli beam theory; measured Al-to-MS slope ratio of 2.84 (within 2.2% of theoretical ratio $E_{\text{MS}}/E_{\text{Al}} \approx 2.90$); quantified clamp compliance. | [📄 PDF](MOM_lab3.pdf) |
 
 ---
 
@@ -59,11 +59,11 @@ MOM_reports/
 - Understand standard ASTM specimen geometries:
   - **Tension (Dog-bone):** Enlarged ends prevent stress concentrations at grips; reduced gauge section enforces uniform uniaxial stress distribution and controlled localized failure.
   - **Compression (Cylindrical):** Precise $L/D$ aspect ratio prevents geometric buckling instability ($L/D$ too high) and minimizes end-platen frictional constraint artifacts ($L/D$ too low).
-- Construct engineering stress-strain ($\sigma$-$\epsilon$) curves and extract material parameters:
-  - Engineering Stress: $\sigma = \frac{P}{A_0}$
-  - Engineering Strain: $\epsilon = \frac{\Delta L}{L_0}$
-  - Young's Modulus: $E = \frac{\Delta\sigma}{\Delta\epsilon}$ (linear elastic region)
-  - Yield Strength ($\sigma_y$): Determined via standard $0.2\%$ ($0.002$) strain offset method for ductile materials.
+- Construct engineering stress-strain ($\sigma$-$\epsilon$) curves and extract constitutive parameters:
+  - **Engineering Stress:** $\sigma = \dfrac{P}{A_0}$
+  - **Engineering Strain:** $\epsilon = \dfrac{\Delta L}{L_0}$
+  - **Young's Modulus (Elastic Slope):** $E = \dfrac{\Delta\sigma}{\Delta\epsilon}$
+  - **Yield Strength ($\sigma_y$):** Determined via standard 0.2% (0.002) strain offset method for ductile materials.
 
 #### Specimen Dimensions
 - **Tension (Dog-bone):**
@@ -100,15 +100,26 @@ MOM_reports/
 #### Objectives & Theoretical Scope
 - Investigate how loading rate and stress state govern material failure modes.
 - **Charpy V-Notch Test:** Evaluate notch sensitivity and dynamic fracture energy absorption ($KV$) under high strain-rate impact loading using a swinging pendulum impact machine.
-- **Torsion Test:** Determine shear constitutive behavior and fundamental shear elastic-plastic parameters under pure twisting moment:
-  - Polar Moment of Area: $J = \frac{\pi d^4}{32}$
-  - Maximum Shear Stress: $\tau = \frac{T \cdot r}{J}$
-  - Surface Shear Strain: $\gamma = \frac{\theta_{\text{rad}} \cdot r}{L}$
-  - Shear Modulus: $G = \frac{\Delta\tau}{\Delta\gamma}$
-  - Yield Shear Strength: $\tau_y$ via $0.2\%$ offset construction: $\tau_{\text{offset}} = G(\gamma - 0.002)$
-  - Ultimate Shear Strength: $\tau_{\max} = \frac{T_{\max} \cdot r}{J}$
+- **Torsion Test Formulations:** Determine shear constitutive behavior and fundamental shear elastic-plastic parameters under pure twisting moment:
+
+  - Polar Moment of Area:
+    $$J = \frac{\pi d^4}{32}$$
+  - Maximum Shear Stress at Outer Radius:
+    $$\tau = \frac{T \cdot r}{J}$$
+  - Surface Shear Strain:
+    $$\gamma = \frac{\theta_{\text{rad}} \cdot r}{L}$$
+  - Shear Modulus (Hooke's Law in shear):
+    $$G = \frac{\Delta\tau}{\Delta\gamma}$$
+  - Yield Shear Strength (0.2% offset):
+    $$\tau_{\text{offset}} = G(\gamma - 0.002)$$
+  - Ultimate Shear Strength:
+    $$\tau_{\max} = \frac{T_{\max} \cdot r}{J}$$
+
 - **Elastic Constant Cross-Validation:** Correlate Shear Modulus ($G$) with tensile Young's Modulus ($E$) to compute Poisson's ratio:
-  $$\nu = \frac{E}{2G} - 1$$
+
+$$
+\nu = \frac{E}{2G} - 1
+$$
 
 #### Experimental Setup & Specimen Specifications
 - **Charpy Impact Setup:** Standard pendulum machine with initial potential energy $E_0 = 150\text{ J}$. Specimens were standard Aluminium V-notched bars ($55\text{ mm} \times 10\text{ mm} \times 10\text{ mm}$) placed as simply supported beams with the notch facing away from the striker. Four independent trials were recorded.
@@ -136,12 +147,15 @@ MOM_reports/
 | Maximum Shear Strain at Fracture | $\gamma_f$ | $0.51$ | $\text{rad}$ |
 
 #### Key Insights & Anomaly Analysis
-1. **Strain-Rate Sensitivity:** While Aluminium displayed vast plastic deformation during slow twisting ($\theta_{\max} \approx 589^\circ$, plastic shear strain $\gamma_f \approx 0.51$), it failed in a flat, brittle cleavage mode under sudden high-speed impact ($E_{\text{avg}} = 16.35\text{ J}$). This contrast proves that triaxial notch stress concentration and high loading rates inhibit dislocation mobility.
+1. **Strain-Rate Sensitivity:** While Aluminium displayed vast plastic deformation during slow twisting ($\theta_{\max} \approx 589^\circ$, plastic shear strain $\gamma_f \approx 0.51$), it failed in a flat, brittle cleavage mode under sudden high-speed impact ($KV_{\text{avg}} = 16.35\text{ J}$). This contrast proves that triaxial notch stress concentration and high loading rates inhibit dislocation mobility.
 2. **Negative Poisson's Ratio Diagnostic ($\nu = -0.89$):**
-   - Substituting experimental $E = 3.5\text{ GPa}$ (from Lab 1) and $G = 15.67\text{ GPa}$ yielded:
-     $$\nu = \frac{3.5}{2(15.67)} - 1 = 0.111 - 1 = -0.889 \approx -0.89$$
-   - For isotropic metals, volume conservation dictates $0.25 \le \nu \le 0.35$ (for Aluminium, $\nu_{\text{theor}} \approx 0.33$). A negative value is physically impossible for monolithic aluminium.
-   - This diagnostic confirmed that while the torsional measurement ($G = 15.67\text{ GPa}$) was within reasonable proximity to standard values ($G \approx 26\text{ GPa}$), the tensile modulus ($E = 3.5\text{ GPa}$) was severely corrupted by machine compliance and grip slippage.
+   Substituting experimental Young's Modulus $E = 3.5\text{ GPa}$ (from Lab 1) and Shear Modulus $G = 15.67\text{ GPa}$ into the isotropic linear elastic relation:
+
+$$
+\nu = \frac{E}{2G} - 1 = \frac{3.5}{2(15.67)} - 1 = 0.111 - 1 = -0.889 \approx -0.89
+$$
+
+   For standard isotropic metals, volume conservation dictates $0.25 \le \nu \le 0.35$ (for Aluminium, $\nu_{\text{theor}} \approx 0.33$). A negative value is physically impossible for monolithic aluminium. This diagnostic directly proved that while the torsional measurement ($G = 15.67\text{ GPa}$) was physically reasonable, the tensile modulus ($E = 3.5\text{ GPa}$) was severely corrupted by machine compliance and grip slippage.
 
 ---
 
@@ -155,23 +169,51 @@ MOM_reports/
 - Measure and analyze transverse elastic deflections of slender rectangular beams under two classical boundary conditions:
   1. **Cantilever Beam:** Point load applied at distance $a = 200\text{ mm}$ from fixed support, deflection recorded at $x = a$.
   2. **Simply Supported Beam:** Symmetric knife-edge supports separated by active span $L = 400\text{ mm}$, central load applied at $a = L/2 = 200\text{ mm}$, deflection recorded at mid-span $x = L/2$.
-- Verify Euler–Bernoulli beam theory:
-  $$EI \frac{d^2 \delta}{dx^2} = M(x)$$
-  - Simply Supported Mid-Span Deflection:
-    $$\delta_{\text{SS}}(L/2) = -\frac{P L^3}{48 EI} = -\frac{P a^3}{6 EI}$$
-  - Cantilever Load-Point Deflection:
-    $$\delta_{\text{Cant}}(a) = -\frac{P a^3}{3 EI}$$
-  - Theoretical Kinematic Deflection Ratio ($a = L/2$):
-    $$\frac{|\delta_{\text{Cant}}(a)|}{|\delta_{\text{SS}}(L/2)|} = 2.00$$
-  - Theoretical Material Deflection Ratio:
-    $$\frac{\Delta\delta_{\text{Al}}}{\Delta\delta_{\text{MS}}} = \frac{E_{\text{MS}}}{E_{\text{Al}}} = \frac{200\text{ GPa}}{69\text{ GPa}} \approx 2.90$$
 - Investigate spatial deflection profiles $\delta(x)$, cubic span scaling ($\delta \propto L^3$), and boundary condition non-idealities.
+
+#### Governing Beam Deflection Equations
+
+Transverse elastic deflections $\delta(x)$ of slender beams are governed by the Euler–Bernoulli differential equation:
+
+$$
+EI \frac{d^2 \delta}{dx^2} = M(x)
+$$
+
+Integrating for the respective boundary conditions yields:
+
+- **Simply Supported Mid-Span Deflection** ($L = 400\text{ mm}$, central load at $x = a = L/2 = 200\text{ mm}$):
+
+$$
+\delta_{\text{SS}}\left(\frac{L}{2}\right) = -\frac{P L^3}{48 EI} = -\frac{P a^3}{6 EI}
+$$
+
+- **Cantilever Load-Point Deflection** ($L = 400\text{ mm}$, load and dial gauge at $x = a = 200\text{ mm}$):
+
+$$
+\delta_{\text{Cant}}(a) = -\frac{P a^3}{3 EI}
+$$
+
+- **Theoretical Kinematic Deflection Ratio** (identical geometry, material, and load $P$ at $x = a = L/2$):
+
+$$
+\frac{|\delta_{\text{Cant}}(a)|}{\left|\delta_{\text{SS}}\left(\frac{L}{2}\right)\right|} = 2.00
+$$
+
+- **Theoretical Material Deflection Ratio** (Aluminium vs. Mild Steel):
+
+$$
+\frac{\delta_{\text{Al}}}{\delta_{\text{MS}}} = \frac{E_{\text{MS}}}{E_{\text{Al}}} = \frac{200\text{ GPa}}{69\text{ GPa}} \approx 2.90
+$$
 
 #### Specimen Geometry & Section Properties
 - Measured rectangular cross-section: width $b = 19.0\text{ mm}$, thickness $h = 3.2\text{ mm}$, active length $L = 400\text{ mm}$.
 - Aspect / Slenderness Ratio: $L/h = 125 \gg 15$ (Euler–Bernoulli assumptions hold; transverse shear deformation is negligible).
-- Area Moment of Inertia:
-  $$I = \frac{b h^3}{12} = \frac{19.0 \times 3.2^3}{12} = 51.88\text{ mm}^4$$
+- **Area Moment of Inertia ($I$):**
+
+$$
+I = \frac{b h^3}{12} = \frac{19.0 \times 3.2^3}{12} = 51.88\text{ mm}^4
+$$
+
 - Theoretical Flexural Rigidities:
   - $(EI)_{\text{Al}} = (69 \times 10^3\text{ N/mm}^2) \times 51.88\text{ mm}^4 = 3.58 \times 10^6\text{ N}\cdot\text{mm}^2$
   - $(EI)_{\text{MS}} = (200 \times 10^3\text{ N/mm}^2) \times 51.88\text{ mm}^4 = 1.04 \times 10^7\text{ N}\cdot\text{mm}^2$
@@ -180,7 +222,7 @@ MOM_reports/
 Dead-weights were applied incrementally from $100\text{ g}$ to $400\text{ g}$ ($P = 0.981\text{ N}$ to $3.924\text{ N}$):
 
 ##### Table 1: Cantilever Beam Deflections ($x = a = 200\text{ mm}$)
-| Mass $m$ (g) | Load $P$ (N) | $\delta_{\text{Al}}$ (mm) | $\delta_{\text{MS}}$ (mm) | Experimental Ratio $|\delta_{\text{Al}}/\delta_{\text{MS}}|$ |
+| Mass $m$ (g) | Load $P$ (N) | $\delta_{\text{Al}}$ (mm) | $\delta_{\text{MS}}$ (mm) | Deflection Ratio (Al / MS) |
 |:---:|:---:|:---:|:---:|:---:|
 | $100$ | $0.981$ | $-0.96$ | $-0.44$ | $2.182$ |
 | $200$ | $1.962$ | $-1.79$ | $-0.80$ | $2.238$ |
@@ -188,7 +230,7 @@ Dead-weights were applied incrementally from $100\text{ g}$ to $400\text{ g}$ ($
 | $400$ | $3.924$ | $-2.99$ | $-1.56$ | $1.917$ |
 
 ##### Table 2: Simply Supported Beam Deflections ($x = L/2 = 200\text{ mm}$)
-| Mass $m$ (g) | Load $P$ (N) | $\delta_{\text{Al}}$ (mm) | $\delta_{\text{MS}}$ (mm) | Experimental Ratio $|\delta_{\text{Al}}/\delta_{\text{MS}}|$ |
+| Mass $m$ (g) | Load $P$ (N) | $\delta_{\text{Al}}$ (mm) | $\delta_{\text{MS}}$ (mm) | Deflection Ratio (Al / MS) |
 |:---:|:---:|:---:|:---:|:---:|
 | $100$ | $0.981$ | $-0.19$ | $-0.31$ | $0.613$ *(seating offset)* |
 | $200$ | $1.962$ | $-0.43$ | $-0.40$ | $1.075$ |
@@ -206,12 +248,23 @@ To eliminate constant zero-offsets and seating artifacts, analysis was conducted
 | **Simply Supported** | Mild Steel | $0.073$ | $0.0744$ | $345.0$ | $200.0$ | $+72.7\%$ |
 
 #### Key Analytical Highlights & Verification
+
 1. **Ratio of Young's Moduli Verification:**
-   - The least-squares slope ratio in the simply supported configuration was:
-     $$\frac{(\Delta\delta/\Delta m)_{\text{SS, Al}}}{(\Delta\delta/\Delta m)_{\text{SS, MS}}} = \frac{0.207\text{ mm/100 g}}{0.073\text{ mm/100 g}} = 2.84$$
-   - Compared against the theoretical ratio $\frac{E_{\text{MS}}}{E_{\text{Al}}} = \frac{200}{69} \approx 2.90$, the experimental slope ratio matches theory within **$2.2\%$**!
-   - This proves that incremental slope regression robustly rejects zero-point shifts and initial seating clearances.
-2. **Initial Seating Anomaly in Mild Steel:** At $100\text{ g}$, the Mild Steel beam registered a larger initial deflection ($-0.31\text{ mm}$) than Aluminium ($-0.19\text{ mm}$), creating an apparent ratio $< 1$. This was identified as initial clearance / bow at knife-edge contact surfaces that seated under load.
+   The least-squares slope ratio in the simply supported configuration was:
+
+$$
+\frac{\left(\dfrac{\Delta\delta}{\Delta m}\right)_{\text{SS, Al}}}{\left(\dfrac{\Delta\delta}{\Delta m}\right)_{\text{SS, MS}}} = \frac{0.207\text{ mm / 100 g}}{0.073\text{ mm / 100 g}} = 2.84
+$$
+
+   Comparing this against the theoretical inverse modulus ratio:
+
+$$
+\frac{E_{\text{MS}}}{E_{\text{Al}}} = \frac{200\text{ GPa}}{69\text{ GPa}} \approx 2.90
+$$
+
+   the experimental slope ratio matches Euler–Bernoulli predictions within **2.2%** (the end-point slope ratio $2.74$ is within **5.5%**). This confirms that evaluating the incremental slope ($\Delta\delta / \Delta m$) effectively eliminates constant zero-point offsets and initial seating clearance artifacts.
+
+2. **Initial Seating Anomaly in Mild Steel:** At $m = 100\text{ g}$, the Mild Steel beam registered a larger initial deflection ($-0.31\text{ mm}$) than Aluminium ($-0.19\text{ mm}$), creating an apparent ratio $< 1$. This was identified as initial clearance / bow at knife-edge contact surfaces that seated under load.
 3. **Cantilever Clamp Rotational Compliance:** Measured cantilever deflections exceeded theory (yielding apparent $E < E_{\text{nominal}}$). A bench vice cannot enforce an infinitely rigid rotational clamp; load-induced parasitic rotation $\theta_0 \approx (0.7\text{--}0.85) \times 10^{-3}\text{ rad/N}$ contributed an additional rigid-body displacement $a\theta_0$.
 4. **Effective Knife-Edge Span:** In the simply supported configuration, both materials deflected less than predicted by a consistent factor of $\approx 1.75$ (compliances were $\sim 57\%$ of theoretical). Because $\delta \propto L^3$, this stiffness increase corresponds directly to an effective support span of $L_{\text{eff}} \approx 332\text{ mm}$ (instead of nominal $400\text{ mm}$) or friction-induced axial restraint at the knife edges.
 5. **Dial Gauge Travel Limitation:** At $400\text{ g}$ on cantilever Aluminium, the deflection increment dropped significantly (from $0.83\text{ mm}$ down to $0.37\text{ mm}$) due to plunger travel limits ($\approx 3\text{ mm}$) or the hanger contacting the base plate.
@@ -226,7 +279,7 @@ To eliminate constant zero-offsets and seating artifacts, analysis was conducted
 | **Uniaxial Compression** | Pure normal compressive stress ($\sigma_{xx} < 0$) | Compressive yield strength, Malleability | High ductility, plastic barreling | High ductility, plastic barreling | High strength, brittle crush along $45^\circ$ shear planes |
 | **Dynamic Impact** | Triaxial tensile stress at notch, high strain rate ($\dot{\epsilon} \gg 1$) | Absorbed impact energy ($KV$), Notch toughness | Brittle dynamic fracture ($KV_{\text{avg}} = 16.35\text{ J}$) | — | — |
 | **Quasi-Static Torsion** | Pure shear stress ($\tau_{xy}$), zero normal stress | Shear modulus $G$, Yield shear strength $\tau_y$ | Extreme ductility ($\theta_{\max} = 589^\circ$, $\gamma_f = 0.51$) | — | — |
-| **Transverse Flexural Bending** | Non-homogeneous normal & shear stresses ($\sigma(y) = -My/I$) | Flexural rigidity ($EI$), Elastic deflection $\delta$ | High compliance, $\delta \propto P L^3 / EI$ | High stiffness ($E_{\text{MS}}/E_{\text{Al}} \approx 2.9$) | — |
+| **Transverse Flexural Bending** | Non-homogeneous normal & shear stresses ($\sigma(y) = -My/I$) | Flexural rigidity ($EI$), Elastic deflection $\delta$ | High compliance, $\delta \propto P L^3 / EI$ | High stiffness ($E_{\text{MS}} / E_{\text{Al}} \approx 2.90$) | — |
 
 ---
 
